@@ -1,0 +1,36 @@
+- invalid_class = @custom_form.errors.messages.present? ? 'is-invalid' : ''
+
+-if @custom_form.errors.messages.present?
+  .bg-danger.alert
+    = @custom_form.errors.full_messages.join(',')
+= form_for @custom_form do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, class: "form-control #{invalid_class}"
+
+  .form-group
+    = f.label :target_email
+    = f.email_field :target_email, class: "form-control #{invalid_class}"
+
+  .form-group
+    .custom-control.custom-switch
+      = f.check_box :enabled, class: "custom-control-input"
+      = f.label :enabled, 'Form enabled', for:'custom_form_enabled', class: 'custom-control-label'
+
+  .form-group
+    .custom-control.custom-switch
+      = f.check_box :allow_notifications, class: "custom-control-input"
+      = f.label :allow_notifications, 'Email Notifications', for:'custom_form_allow_notifications', class: 'custom-control-label'
+
+  .form-group
+    .custom-control.custom-switch
+      = f.check_box :allow_recording_submissions, class: "custom-control-input"
+      = f.label :allow_recording_submissions, 'Submissions archive', for:'custom_form_allow_recording_submissions', class: 'custom-control-label'
+
+  .form-group
+    = f.label :restrict_domian
+    = f.text_field :restrict_domian, class: "form-control #{invalid_class}"
+
+  .form-group
+    .actions
+      = f.submit 'Save', class: 'btn btn-primary'

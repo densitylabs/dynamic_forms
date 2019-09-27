@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: dynamic_forms
+  timeout: 5000
+
+staging:
+  <<: *default
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+  database: dynamic_forms
+
+production:
+  <<: *default

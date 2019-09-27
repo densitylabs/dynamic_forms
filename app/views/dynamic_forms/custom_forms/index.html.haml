@@ -1,0 +1,25 @@
+
+.row
+  .col-12
+    .card.my-5
+      .card-header.justify-content-between.align-items-center.d-flex
+        %h2 Forms
+        = link_to 'Add new', new_custom_form_path, class: 'btn btn-primary'
+      .car-body
+        %table.table
+          %thead
+            %tr
+              %th
+                Name
+              %th
+                Submissions
+              %th
+                Status
+              %th
+                actions
+
+          %tbody
+            = render @custom_forms
+      - if @custom_forms.total_pages > 1
+        .card-footer
+          = paginate @custom_forms, theme:'bootstrap4'

@@ -1,0 +1,22 @@
+.row
+  .col-12
+    .card.my-5
+      .card-header
+        %h2=@custom_form.name.titleize
+      .card-body
+        .row
+          .col-1.p-2.font-weight-bold
+          .col-8.col-md-3.p-2.font-weight-bold
+            Date
+          .col-3.d-none.d-md-block.p-2.font-weight-bold
+            _subject
+          .col-3.d-none.d-md-block.p-2.font-weight-bold
+            Email
+          .col-3.col-md-2.p-2.font-weight-bold
+            .d-flex.justify-content-end
+              Actions
+
+        = render partial: 'submission', collection: @submissions
+      .card-footer.d-flex.align-items-center{class: @submissions.total_pages > 1 ? 'justify-content-between' : 'justify-content-end'}
+        = paginate @submissions, theme:'bootstrap4'
+        = link_to 'Back', custom_forms_path, class: 'btn btn-secondary'

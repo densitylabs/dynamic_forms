@@ -1,0 +1,9 @@
+.row
+  .col-12
+    .card.my-5
+      .card-header
+        %h2=@custom_form.name.titleize
+      .card-body
+        To be define
+      .card-footer.d-flex.justify-content-end.align-items-center
+        = link_to 'Back', custom_forms_path, class: 'btn btn-secondary'

@@ -1,0 +1,14 @@
+.row
+  .col-12
+    .card.my-5
+      .card-header
+        %h2 Settings
+      .card-body
+        .d-inline-flex.w-100.mb-4.p-2.rounded.bg-light
+          .font-weight-bold
+            Endpoint:
+          .pl-2.text-monospace
+            = api_form_url(@custom_form)
+        = render partial: 'settings'
+      .card-footer.d-flex.justify-content-end.align-items-center
+        = link_to 'Back', custom_forms_path, class: 'btn btn-secondary'
