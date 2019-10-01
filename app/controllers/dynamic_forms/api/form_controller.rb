@@ -5,7 +5,6 @@ module DynamicForms
     class FormController < ActionController::Base
       UNECESSARY_PARAMS = %w[action controller uuid]
 
-      skip_before_action :verify_authenticity_token
       before_action :honey_pot, only: [:create]
       before_action :set_custom_form
       before_action :validations
