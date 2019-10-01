@@ -22,4 +22,4 @@
             = render @custom_forms
       - if @custom_forms.total_pages > 1
         .card-footer
-          = paginate @custom_forms
+          = paginate @custom_forms, theme: 'bootstrap4'
