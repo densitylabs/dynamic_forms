@@ -1,7 +1,7 @@
 require_dependency "dynamic_forms/application_controller"
 
 module DynamicForms
-  class SubmissionsController < ApplicationController
+  class SubmissionsController < DynamicForms::ApplicationController
     before_action :load_custom_form
     before_action :load_submission, only: %w[destroy]
 

@@ -1,7 +1,7 @@
 require_dependency "dynamic_forms/application_controller"
 
 module DynamicForms
-  class CustomFormsController < ApplicationController
+  class CustomFormsController < DynamicForms::ApplicationController
     before_action :load_custom_form, only: %w[edit update destroy show]
 
     def index

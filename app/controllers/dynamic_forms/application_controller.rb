@@ -1,5 +1,8 @@
 module DynamicForms
-  class ApplicationController < ActionController::Base
-    protect_from_forgery with: :exception
+  class ApplicationController < ::ApplicationController
+    include ApplicationHelper
+    if DynamicForms.layout
+      layout DynamicForms.layout
+    end
   end
 end

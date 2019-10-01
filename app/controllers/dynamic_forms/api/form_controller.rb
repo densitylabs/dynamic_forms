@@ -2,7 +2,7 @@ require_dependency "dynamic_forms/application_controller"
 
 module DynamicForms
   module Api
-    class FormController < ApplicationController
+    class FormController < ActionController::Base
       UNECESSARY_PARAMS = %w[action controller uuid]
 
       skip_before_action :verify_authenticity_token
