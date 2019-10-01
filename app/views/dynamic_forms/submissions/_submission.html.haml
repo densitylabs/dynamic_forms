@@ -1,7 +1,7 @@
 .row
   .col-1.p-2.border-top.d-flex.align-items-center
     %button.btn.btn-link.btn-sm(type="button" data-toggle="collapse" aria-expanded="false"){'data-target': "#submission#{submission.id}", 'aria-controls': "submission#{submission.id}"}
-      = icon('fas', 'caret-right')
+      &gt;
   .col-8.col-md-3.p-2.border-top
     = submission.created_at.strftime('%b, %d %y  %H:%M')
   .col-3.d-none.d-md-block.p-2.border-top
@@ -10,8 +10,7 @@
     = submission.fields['email']
   .col-3.col-md-2.p-2.border-top
     .d-flex.justify-content-end
-      = link_to custom_form_submission_path(id: submission.id, custom_form_id: submission.custom_form.slug), method: :delete, class: 'btn btn-link btn-sm mx-1', data: { confirm: 'Are you sure? ' } do
-        = icon('fas', 'trash-alt', class: 'text-danger')
+      = link_to 'Delete', custom_form_submission_path(id: submission.id, custom_form_id: submission.custom_form.slug), method: :delete, class: 'btn btn-link btn-sm mx-1 text-danger', data: { confirm: 'Are you sure? ' }
 
   .col-12.collapse{id: "submission#{submission.id}"}
     .d-flex.flex-row.flex-wrap.py-3.mb-3.bg-light.rounded

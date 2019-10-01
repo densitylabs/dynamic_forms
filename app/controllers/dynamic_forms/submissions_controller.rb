@@ -9,14 +9,13 @@ module DynamicForms
         @submissions = @custom_form.submissions
                                    .order('created_at DESC')
                                    .page(params[:page])
-                                   .per(10)
     end
 
     def destroy
       if @submission.destroy
         flash[:success] = "Submission was successfully destroyed"
       else
-        flash[:error] =  "Submission couldn't be destroyed, try again"
+        flash[:error] = "Submission couldn't be destroyed, try again"
       end
       redirect_to custom_form_submissions_path(@custom_form)
     end

@@ -3,11 +3,11 @@ require_dependency "dynamic_forms/application_controller"
 module DynamicForms
   class CustomFormsController < ApplicationController
     before_action :load_custom_form, only: %w[edit update destroy show]
-    def index
-      @custom_forms = CustomForm.page(params[:page]).per(10)
-    end
 
-    def show; end
+    def index
+      @custom_forms = CustomForm.page(params[:page])
+      render :index
+    end
 
     def new
       @custom_form = CustomForm.new

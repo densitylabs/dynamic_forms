@@ -42,7 +42,7 @@ module DynamicForms
         return render json: {}, status: :not_found unless @custom_form.enabled
         return unless @custom_form.restrict_domian.present?
 
-        if request.domain != @custom_form.restrict_domian
+        unless request.domain == @custom_form.restrict_domian
           return render json: {}, status: :unauthorized
         end
       end

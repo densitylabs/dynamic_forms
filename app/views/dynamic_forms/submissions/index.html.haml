@@ -18,5 +18,5 @@
 
         = render partial: 'submission', collection: @submissions
       .card-footer.d-flex.align-items-center{class: @submissions.total_pages > 1 ? 'justify-content-between' : 'justify-content-end'}
-        = paginate @submissions, theme:'bootstrap4'
+        = paginate @submissions
         = link_to 'Back', custom_forms_path, class: 'btn btn-secondary'
