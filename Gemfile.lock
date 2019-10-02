@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dynamic_forms (0.3.1)
+    dynamic_forms (0.3.2)
       friendly_id (~> 5.1.0)
       jquery-rails
       kaminari

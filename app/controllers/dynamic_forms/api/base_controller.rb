@@ -1,11 +1,9 @@
 module DynamicForms
   module Api
-    class BaseController < DynamicForms::ApplicationController
-      skip_before_action :verify_authenticity_token
+    class BaseController < ActionController::Base
       before_action :set_cors
 
       private
-
       def set_cors
         headers['Access-Control-Allow-Origin'] = '*'
         headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
