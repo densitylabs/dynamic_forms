@@ -53,7 +53,7 @@ describe DynamicForms::CustomFormsController, type: :controller do
         id: custom_form.id,
         custom_form: {
           name: 'Custom Form2',
-          restrict_domian: 'domain.com',
+          restrict_domain: 'domain.com',
           target_email: 'test@mail.com',
           allow_notifications: false
         }
@@ -68,7 +68,7 @@ describe DynamicForms::CustomFormsController, type: :controller do
         id: custom_form.id,
         custom_form: {
           name: 'Custom Form2',
-          restrict_domian: 'domain.com',
+          restrict_domain: 'domain.com',
           target_email: 'test',
           allow_notifications: false
         }

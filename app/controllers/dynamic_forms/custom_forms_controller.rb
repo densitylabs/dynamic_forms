@@ -50,7 +50,7 @@ module DynamicForms
     def custom_forms_params
       params.require(:custom_form).permit(
         :name,
-        :restrict_domian,
+        :restrict_domain,
         :target_email,
         :enabled,
         :allow_notifications,

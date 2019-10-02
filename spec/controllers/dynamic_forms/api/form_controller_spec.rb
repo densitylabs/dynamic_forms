@@ -37,9 +37,9 @@ describe DynamicForms::Api::FormController, type: :controller do
         expect(response.status).to eq(404)
       end
     end
-    context 'when custom form has a restrict_domian' do
+    context 'when custom form has a restrict_domain' do
       before do
-        custom_form.update(restrict_domian: 'custom_domian.com')
+        custom_form.update(restrict_domain: 'custom_domian.com')
         custom_form.reload
       end
       it 'returns a unauthorized status' do

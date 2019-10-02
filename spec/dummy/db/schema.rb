@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20190923174214) do
     t.string "name"
     t.boolean "enabled", default: true
     t.string "slug"
-    t.string "restrict_domian"
+    t.string "restrict_domain"
     t.string "target_email"
     t.boolean "allow_notifications", default: true
     t.boolean "allow_recording_submissions", default: true

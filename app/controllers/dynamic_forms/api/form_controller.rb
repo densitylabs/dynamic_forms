@@ -39,9 +39,9 @@ module DynamicForms
 
       def validations
         return render json: {}, status: :not_found unless @custom_form.enabled
-        return unless @custom_form.restrict_domian.present?
+        return unless @custom_form.restrict_domain.present?
 
-        unless request.domain == @custom_form.restrict_domian
+        unless request.domain == @custom_form.restrict_domain
           return render json: {}, status: :unauthorized
         end
       end
