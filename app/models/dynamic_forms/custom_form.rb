@@ -8,6 +8,7 @@ module DynamicForms
     validates :name, presence: true
     validates :target_email, format: { with: URI::MailTo::EMAIL_REGEXP },
       allow_blank: true
+    validates_uniqueness_of :slug
 
     before_create :assign_slug
 

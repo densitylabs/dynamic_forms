@@ -2,10 +2,9 @@ require_dependency "dynamic_forms/application_controller"
 
 module DynamicForms
   module Api
-    class FormController < ApplicationController
+    class FormController < DynamicForms::Api::BaseController
       UNECESSARY_PARAMS = %w[action controller uuid]
 
-      skip_before_action :verify_authenticity_token
       before_action :honey_pot, only: [:create]
       before_action :set_custom_form
       before_action :validations
@@ -40,9 +39,9 @@ module DynamicForms
 
       def validations
         return render json: {}, status: :not_found unless @custom_form.enabled
-        return unless @custom_form.restrict_domian.present?
+        return unless @custom_form.restrict_domain.present?
 
-        if request.domain != @custom_form.restrict_domian
+        unless request.domain == @custom_form.restrict_domain
           return render json: {}, status: :unauthorized
         end
       end

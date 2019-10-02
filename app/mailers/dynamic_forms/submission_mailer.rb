@@ -8,7 +8,10 @@ module DynamicForms
       @time = submission.created_at || Time.current
       default_subject = "New submission in #{@custom_form.name} form"
       subject = submission.fields['_subject'] || default_subject
-      mail(to: @custom_form.target_email, subject: subject)
+      mail(
+        to: @custom_form.target_email,
+        subject: "[#{@custom_form.name}] #{subject}"
+      )
     end
   end
 end

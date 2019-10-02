@@ -16,10 +16,10 @@
               %th
                 Status
               %th
-                actions
+                Actions
 
           %tbody
             = render @custom_forms
       - if @custom_forms.total_pages > 1
         .card-footer
-          = paginate @custom_forms, theme:'bootstrap4'
+          = paginate @custom_forms, theme: 'bootstrap4'

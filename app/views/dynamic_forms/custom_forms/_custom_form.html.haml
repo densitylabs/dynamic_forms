@@ -2,13 +2,11 @@
   %td
     = custom_form.name
   %td
-    = custom_form.submissions.count
+    - if custom_form.submissions.count > 0
+      = link_to custom_form.submissions.count, custom_form_submissions_path(custom_form), class: 'btn btn-link btn-sm text-primary'
+    - else
+      0
   %td
-    = custom_form.enabled
+    = is_active? custom_form.enabled
   %td
-    = link_to custom_form_submissions_path(custom_form), class: 'btn btn-link btn-sm' do
-      = icon('fas', 'eye', class: 'text-primary')
-    = link_to edit_custom_form_path(custom_form), class: 'btn btn-link btn-sm' do
-      = icon('fas', 'edit', class: 'text-success')
-    = link_to custom_form, method: :delete, class: 'btn btn-link btn-sm', data: { confirm: 'Are you sure? ' } do
-      = icon('fas', 'trash-alt', class: 'text-danger')
+    = link_to 'Edit', edit_custom_form_path(custom_form), class: 'btn btn-link btn-sm text-success'

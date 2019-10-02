@@ -1,5 +1,9 @@
 require "dynamic_forms/engine"
 
 module DynamicForms
-  # Your code goes here...
+  mattr_accessor :layout
+
+  def self.config
+    yield(self)
+  end
 end
