@@ -2,7 +2,7 @@ require_dependency "dynamic_forms/application_controller"
 
 module DynamicForms
   module Api
-    class FormController < ActionController::Base
+    class FormController < DynamicForms::Api::BaseController
       UNECESSARY_PARAMS = %w[action controller uuid]
 
       before_action :honey_pot, only: [:create]
