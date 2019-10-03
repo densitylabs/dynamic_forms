@@ -28,7 +28,7 @@ module DynamicForms
 
     def update
       if @custom_form.update(custom_forms_params)
-        flash[:success] = "Custom form was successfully created"
+        flash[:success] = "Custom form was successfully updated"
         redirect_to custom_forms_path
       else
         flash[:error] =  "Something is wrong, try again"
