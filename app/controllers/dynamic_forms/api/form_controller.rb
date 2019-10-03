@@ -13,7 +13,7 @@ module DynamicForms
       def create
         submission = SubmissionCreator.for(custom_params, @custom_form)
         SubmissionNotificator.for(submission)
-        render json: {message: "Information was successfully sent"}, status: :ok
+        render json: {message: "The information was successfully sent"}, status: :ok
       rescue => e
         return render json:
           { message: e.message },
