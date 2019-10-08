@@ -1,0 +1,6 @@
+.dropdown
+  %button#dropdownMenuButton.btn.btn-link.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+    Export as
+  .dropdown-menu{"aria-labelledby": "dropdownMenuButton"}
+    = link_to 'CSV', custom_form_submissions_path(@custom_form, format: 'csv'), class: 'dropdown-item'
+    = link_to 'XLSX', custom_form_submissions_path(@custom_form, format: 'xlsx'), class: 'dropdown-item'
