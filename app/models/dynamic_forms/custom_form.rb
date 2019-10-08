@@ -23,9 +23,11 @@ module DynamicForms
 
     def multi_emails
       return unless target_email
+
       target_email.split(',').each do |email|
         unless URI::MailTo::EMAIL_REGEXP.match?(email)
-           errors.add(:base, "'#{email}' is not a valid email")
+          errors.add(:base,
+            "'#{email}' #{I18n.t('custom_errors.invalid_mail')}")
         end
       end
     end

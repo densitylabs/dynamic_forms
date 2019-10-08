@@ -16,10 +16,10 @@ module DynamicForms
     def create
       @custom_form = CustomForm.new(custom_forms_params)
       if @custom_form.save
-        flash[:success] = "Custom form was successfully created"
+        flash[:success] = I18n.t('custom_form.flash_messages.success.create')
         redirect_to custom_forms_path
       else
-        flash[:error] =  "Something is wrong, try again"
+        flash[:error] =  I18n.t('custom_form.flash_messages.error.general')
         render :new
       end
     end
@@ -28,19 +28,19 @@ module DynamicForms
 
     def update
       if @custom_form.update(custom_forms_params)
-        flash[:success] = "Custom form was successfully updated"
+        flash[:success] = I18n.t('custom_form.flash_messages.success.update')
         redirect_to custom_forms_path
       else
-        flash[:error] =  "Something is wrong, try again"
+        flash[:error] =  I18n.t('custom_form.flash_messages.error.general')
         render :edit
       end
     end
 
     def destroy
       if @custom_form.destroy
-        flash[:success] = "Custom form was successfully destroyed"
+        flash[:success] = I18n.t('custom_form.flash_messages.success.destroy')
       else
-        flash[:error] =  "Custom form couldn't be destroyed, try again"
+        flash[:error] =  I18n.t('custom_form.flash_messages.error.general')
       end
       redirect_to custom_forms_path
     end
@@ -61,7 +61,7 @@ module DynamicForms
     def load_custom_form
       @custom_form = CustomForm.friendly.find(params[:id])
     rescue
-      flash[:error] =  "Custom form was not found"
+      flash[:error] = I18n.t('custom_form.flash_messages.error.no_found')
       redirect_to custom_forms_path
     end
   end
