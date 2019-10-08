@@ -3,12 +3,17 @@ require_dependency "dynamic_forms/application_controller"
 module DynamicForms
   class SubmissionsController < DynamicForms::ApplicationController
     before_action :load_custom_form
-    before_action :load_submission, only: %w[destroy]
+    before_action :load_submission, only: %i[destroy]
+    before_action :load_submissions, only: %i[index export]
 
     def index
-        @submissions = @custom_form.submissions
-                                   .order('created_at DESC')
-                                   .page(params[:page])
+      respond_to do |format|
+        format.html
+        format.csv { 
+          send_data SubmissionExporter.for(@submissions, 'csv'), 
+          filename: "submissions-#{Date.today}.csv" 
+        }
+      end
     end
 
     def destroy
@@ -20,6 +25,7 @@ module DynamicForms
       redirect_to custom_form_submissions_path(@custom_form)
     end
 
+
     private
 
     def load_custom_form
@@ -27,6 +33,12 @@ module DynamicForms
     rescue
       flash[:error] =  "Custom form was not found"
       redirect_to custom_forms_path
+    end
+
+    def load_submissions
+      @submissions = @custom_form.submissions
+                                   .order('created_at DESC')
+                                   .page(params[:page])
     end
 
     def load_submission
