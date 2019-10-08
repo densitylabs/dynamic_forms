@@ -10,8 +10,10 @@ module DynamicForms
       respond_to do |format|
         format.html
         format.csv { 
-          send_data SubmissionExporter.for(@submissions, 'csv'), 
-          filename: "submissions-#{Date.today}.csv" 
+          send_data(
+            SubmissionExporter.for(@custom_form.submissions.order('created_at'), 'csv'),
+            filename: "submissions-#{Date.today}.csv"
+          )
         }
       end
     end

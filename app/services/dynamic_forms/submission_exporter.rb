@@ -2,6 +2,8 @@ require 'csv'
 
 module DynamicForms
   class SubmissionExporter
+    FORMAT_DATE = '%B %m, %Y, %H:%M'.freeze
+
     def self.for(submissions, format_type)
       new(submissions, format_type).export
     end
@@ -17,9 +19,9 @@ module DynamicForms
     def export
       case @format_type
       when 'csv'
-        as_csv
+        to_csv
       when 'xls'
-        as_xls
+        to_xls
       else
         raise ArgumentError, 'This format is not available'
       end
@@ -27,29 +29,39 @@ module DynamicForms
 
     private
 
-    def as_csv
-
+    def to_csv
       CSV.generate(headers: true) do |csv|
-        csv << build_header
-        binding.pry
-        csv.binmode.each do |row|
-          binding.pry
-        end
-      end
-    end
+        header = ['Created at'] + build_header
+        csv << header
 
-    def as_xls
-    end
-
-    def build_header
-      [].tap do |header|
         @submissions.each do |submission|
-          submission.fields.keys.each do |attribute|
-            column = attribute.downcase
-            header.push(column) unless header.include?(column)
+          csv << [].tap do |row|
+            row[0] = submission.created_at.strftime(FORMAT_DATE)
+            submission.fields.each do |key, value|
+              column_name = key.capitalize
+              column_index = header.find_index(column_name)
+
+              row[column_index] = value
+            end
+          end
+        end
+
+        @submissions.map do |submission|
+          header.each do |column|
+            column_name = column.downcase
+
           end
         end
       end
+    end
+
+    def to_xls
+    end
+
+    def build_header
+      Submission
+        .select('json_object_keys(fields) as field_keys')
+        .distinct.map{ |s| s.field_keys.capitalize }
     end
   end
 end
