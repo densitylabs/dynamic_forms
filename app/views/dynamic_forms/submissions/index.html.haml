@@ -2,7 +2,9 @@
   .col-12
     .card.my-5
       .card-header
-        %h2=@custom_form.name.titleize
+        .d-flex.justify-content-between
+          %h2=@custom_form.name.titleize
+          = render 'export_as'
       .card-body
         .row
           .col-1.p-2.font-weight-bold
