@@ -1,0 +1,39 @@
+---
+es:
+  activerecord:
+    attributes:
+      dynamic_forms/custom_form:
+        allow_notifications: Permitir notificaciones
+        allow_recording_submissions: Permitir guardar registros
+        enabled: habilitado
+        name: Nombre
+        restrict_domain: Restringir al dominio
+        slug: Identificador
+        target_email: Correo destino
+    errors:
+      messages:
+        blank: no puede estar en blanco
+  custom_errors:
+    invalid_mail: no es un correo electrónico valido
+  custom_form:
+    flash_messages:
+      error:
+        general: Algo salió mal, prueba de nuevo.
+        no_found: El formulario no fue encontrado
+      success:
+        create: El formulario fue creado con éxito
+        destroy: El formulario fue destruido con éxito
+        update: El formulario fue actualizado con éxito
+  submission:
+    flash_messages:
+      error:
+        general: El registro fue destruido con éxito
+        no_found: El registro no fue encontrado
+      success:
+        destroy: Submission was successfully destroyed
+  submission_mailer:
+    notify_submission:
+      default_subject: Nuevo registro en el formulario %{custom_form_name}
+      new_form_submission: NUEVO REGISTRO DE FORMULARIO
+      submitted_from: 'Alguien acaba de enviar su formulario desde %{request_url}.
+        Esto es lo que tenían que decir:'

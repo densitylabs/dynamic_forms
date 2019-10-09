@@ -16,9 +16,9 @@ module DynamicForms
 
     def destroy
       if @submission.destroy
-        flash[:success] = "Submission was successfully destroyed"
+        flash[:success] = I18n.t('submission.flash_messages.success.destroy')
       else
-        flash[:error] = "Submission couldn't be destroyed, try again"
+        flash[:error] = I18n.t('submission.flash_messages.error.general')
       end
       redirect_to custom_form_submissions_path(@custom_form)
     end
@@ -29,7 +29,7 @@ module DynamicForms
     def load_custom_form
       @custom_form = CustomForm.friendly.find(params[:custom_form_id])
     rescue
-      flash[:error] =  "Custom form was not found"
+      flash[:error] = I18n.t('custom_form.flash_messages.error.no_found')
       redirect_to custom_forms_path
     end
 
@@ -42,7 +42,7 @@ module DynamicForms
     def load_submission
       @submission = @custom_form.submissions.find(params[:id])
     rescue
-      flash[:error] =  "Submission was not found"
+      flash[:error] = I18n.t('submission.flash_messages.error.no_found')
       redirect_to custom_form_path(@custom_form)
     end
 
