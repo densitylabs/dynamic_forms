@@ -6,7 +6,10 @@ module DynamicForms
       @custom_form = submission.custom_form
       @request_url = submission.request_url
       @time = submission.created_at || Time.current
-      default_subject = "New submission in #{@custom_form.name} form"
+      default_subject = I18n.t(
+        'submission_mailer.notify_submission.default_subject',
+        custom_form_name: @custom_form.name
+        )
       subject = submission.fields['_subject'] || default_subject
       mail(
         to: @custom_form.target_email,

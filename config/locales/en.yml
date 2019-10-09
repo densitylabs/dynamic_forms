@@ -1,0 +1,39 @@
+---
+en:
+  activerecord:
+    attributes:
+      dynamic_forms/custom_form:
+        allow_notifications: Allow notifications
+        allow_recording_submissions: Allow recording submissions
+        enabled: Enabled
+        name: Name
+        restrict_domain: restrict to domain
+        slug: Slug
+        target_email: Target email
+    errors:
+      messages:
+        blank: can't be blank
+  custom_errors:
+    invalid_mail: is not a valid email
+  custom_form:
+    flash_messages:
+      error:
+        general: Something is wrong, try again
+        no_found: Form was not found
+      success:
+        create: Form was successfully created
+        destroy: Form was successfully destroyed
+        update: Form was successfully updated
+  submission:
+    flash_messages:
+      error:
+        general: Something is wrong, try again
+        no_found: Submission was not found
+      success:
+        destroy: Submission was successfully destroyed
+  submission_mailer:
+    notify_submission:
+      default_subject: New submission in %{custom_form_name} form
+      new_form_submission: NEW FORM SUBMISSION
+      submitted_from: 'Someone just submitted your form on %{request_url}. Here''s
+        what they had to say:'
