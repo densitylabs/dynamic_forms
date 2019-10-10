@@ -1,11 +1,14 @@
 PATH
   remote: .
   specs:
-    dynamic_forms (0.3.4)
+    dynamic_forms (0.3.5)
+      axlsx
+      axlsx_rails
       friendly_id (~> 5.1.0)
       jquery-rails
       kaminari
       rails (~> 5.1.0)
+      zip-zip
 
 GEM
   remote: https://rubygems.org/
@@ -52,6 +55,9 @@ GEM
       htmlentities (~> 4.3.1)
       nokogiri (>= 1.4.1)
       rubyzip (~> 1.0.0)
+    axlsx_rails (0.5.2)
+      actionpack (>= 3.1)
+      axlsx (>= 2.0.1)
     builder (3.2.3)
     byebug (11.0.1)
     coderay (1.1.2)
@@ -183,12 +189,13 @@ GEM
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    zip-zip (0.3)
+      rubyzip (>= 1.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  axlsx
   byebug
   database_cleaner
   dynamic_forms!
