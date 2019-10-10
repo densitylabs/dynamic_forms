@@ -1,4 +1,5 @@
 require 'csv'
+require 'axlsx'
 
 module DynamicForms
   class SubmissionExporter

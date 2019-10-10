@@ -23,4 +23,3 @@ end
 gem "kaminari"
 gem "friendly_id", "~> 5.1.0"
 gem "jquery-rails"
-gem 'axlsx'
