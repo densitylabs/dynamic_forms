@@ -20,4 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency "kaminari"
   s.add_dependency "friendly_id", "~> 5.1.0"
   s.add_dependency "jquery-rails"
+  s.add_dependency 'axlsx'
+  s.add_dependency 'axlsx_rails'
+  s.add_dependency 'zip-zip'
 end
