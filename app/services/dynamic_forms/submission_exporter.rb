@@ -51,7 +51,6 @@ module DynamicForms
           end
         end
       end
-      xlsx.serialize('/tmp/submission_temp.xlsx')
       xlsx.to_stream.read
     end
 
