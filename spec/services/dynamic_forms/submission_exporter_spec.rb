@@ -58,13 +58,15 @@ describe DynamicForms::SubmissionExporter do
 
   context '#to_xlsx' do
     subject { DynamicForms::SubmissionExporter.for(all_submissions, 'xlsx') }
-    let!(:xlsx) {  Roo::Excelx.new('/tmp/submission_temp.xlsx') }
+    let!(:xlsx) {  
+      temp = Tempfile.new(['submissions', '.xlsx'])
+      temp.write(subject)
+      temp.close
+      Roo::Excelx.new(temp.path)
+    }
 
-    it 'includes the header' do
+    it 'includes the header and data of submissions' do
       expect(xlsx.row(1)).to eq(["Created at", "Gender", "_subject", "Phone", "Age", "Email", "Name"])
-    end
-
-    it 'includes correct data' do
       expect(xlsx.row(2)).to eq(["October 10, 2019, 19:39", nil, "Test email", nil, nil, "custom@mail.com", "John"])
       expect(xlsx.row(8)).to eq(["October 10, 2019, 19:39", "F", nil, 1231432.0, 12.0, nil, nil])
     end
