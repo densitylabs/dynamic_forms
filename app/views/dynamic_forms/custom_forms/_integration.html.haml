@@ -7,26 +7,4 @@
 .form-group
   = f.hidden_field :json_schema, value: default_json_schema
 
-#jsoneditor.w-100.mb-5{:style => "height: 600px;"}
-
-:javascript
-  // create the editor
-  const container = document.getElementById("jsoneditor");
-  const json_schema_field = document.getElementById("custom_form_json_schema");
-
-  let options = {
-    mode: 'code',
-    modes: ['code','preview'],
-    onChange: function () {
-      self.updateField();
-    }
-  };
-  const editor = new JSONEditor(container, options);
-  // set json
-  editor.set(JSON.parse(json_schema_field.value));
-
-  function updateField() {
-    const json = editor.get();
-    json_schema_field.value = JSON.stringify(json)
-    console.log(json) 
-  }
+#json_editor_container.w-100.mb-5{:style => "height: 600px;"}

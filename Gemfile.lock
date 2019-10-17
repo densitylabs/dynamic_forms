@@ -1,11 +1,12 @@
 PATH
   remote: .
   specs:
-    dynamic_forms (0.3.6)
+    dynamic_forms (0.4.0)
       axlsx
       axlsx_rails
       friendly_id (~> 5.1.0)
       jquery-rails
+      json_schemer
       kaminari
       rails (~> 5.1.0)
       zip-zip
@@ -228,7 +229,6 @@ DEPENDENCIES
   friendly_id (~> 5.1.0)
   haml
   jquery-rails
-  json_schemer
   kaminari
   pg
   pry
