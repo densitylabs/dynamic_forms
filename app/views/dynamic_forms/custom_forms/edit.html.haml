@@ -2,14 +2,25 @@
   .col-12
     .card.my-5
       .card-header.d-flex.justify-content-between.align-items-center
-        %h2 Settings
+        %ul#pills-tab.nav.nav-pills{:role => "tablist"}
+          %li.nav-item
+            %a#pills-settings-tab.nav-link.active{"aria-controls" => "pills-settings", "aria-selected" => "true", "data-toggle" => "pill", :href => "#pills-settings", :role => "tab"} Settings
+          %li.nav-item
+            %a#pills-integration-tab.nav-link{"aria-controls" => "pills-integration", "aria-selected" => "false", "data-toggle" => "pill", :href => "#pills-integration", :role => "tab"} Integration
         = link_to 'Delete', @custom_form, method: :delete, class: 'btn btn-link btn-sm text-danger', data: { confirm: 'Are you sure? ' }
       .card-body
-        .d-inline-flex.w-100.mb-4.p-2.rounded.bg-light
-          .font-weight-bold
-            Endpoint:
-          .pl-2.text-monospace
-            = api_form_url(@custom_form)
-        = render partial: 'settings'
+        -if @custom_form.errors.messages.present?
+          .bg-danger.alert
+            = @custom_form.errors.full_messages.join(',')
+
+        = form_for @custom_form do |f|
+          #pills-tabContent.tab-content
+            #pills-settings.tab-pane.fade.show.active{"aria-labelledby" => "pills-settings-tab", :role => "tabpanel"}
+              = render partial: 'settings', locals: { f:f }
+            #pills-integration.tab-pane.fade{"aria-labelledby" => "pills-integration-tab", :role => "tabpanel"}
+              = render partial: 'integration', locals: { f:f }
+          .form-group
+            .actions
+              = f.submit 'Save', class: 'btn btn-primary'
       .card-footer.d-flex.justify-content-end.align-items-center
         = link_to 'Back', custom_forms_path, class: 'btn btn-secondary'

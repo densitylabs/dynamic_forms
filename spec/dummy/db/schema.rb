@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190923174214) do
+ActiveRecord::Schema.define(version: 20191018174611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(version: 20190923174214) do
     t.boolean "allow_recording_submissions", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "json_schema"
+    t.boolean "is_json_schema_enabled", default: false
+    t.json "ui_schema"
+    t.boolean "is_ui_schema_enabled", default: false
     t.index ["slug"], name: "index_dynamic_forms_custom_forms_on_slug"
   end
 
