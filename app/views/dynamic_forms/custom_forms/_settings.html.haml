@@ -29,5 +29,10 @@
     = f.label :is_json_schema_enabled, for:'custom_form_is_json_schema_enabled', class: 'custom-control-label'
 
 .form-group
+  .custom-control.custom-switch
+    = f.check_box :is_ui_schema_enabled, class: "custom-control-input"
+    = f.label :is_ui_schema_enabled, for:'custom_form_is_ui_schema_enabled', class: 'custom-control-label'
+
+.form-group
   = f.label :restrict_domain
   = f.text_field :restrict_domain, class: "form-control #{invalid_class}"

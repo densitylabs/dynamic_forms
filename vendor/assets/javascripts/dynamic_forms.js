@@ -2,6 +2,7 @@
 
 document.addEventListener("DOMContentLoaded", function(){
   initJsonEditor();
+  initJsonEditorUi();
 });
 
 function initJsonEditor(){
@@ -21,7 +22,25 @@ function initJsonEditor(){
     }
   };
   const jsonEditor = new JSONEditor(jsonEditorContainer, jsonEditorOptions);
-
   jsonEditor.set(JSON.parse(jsonSchemaField.value));
+}
 
+function initJsonEditorUi(){
+  const jsonEditorContainer = document.getElementById("json_editor_container_ui");
+  const uiSchemaField = document.getElementById("custom_form_ui_schema");
+
+  const jsonEditorOptions = {
+    mode: 'code',
+    modes: ['code','preview'],
+    sortObjectKeys: true,
+    onChange: function () {
+      try {
+        uiSchemaField.value = JSON.stringify(jsonEditor.get());
+      } catch (e) {
+        return;
+      }
+    }
+  };
+  const jsonEditor = new JSONEditor(jsonEditorContainer, jsonEditorOptions);
+  jsonEditor.set(JSON.parse(uiSchemaField.value));
 }
