@@ -2,13 +2,13 @@ require 'rails_helper'
 
 describe DynamicForms::SubmissionExporter do
   let!(:submissions) { create_list(:submission, 5, created_at: '2019-10-08 19:39:06 UTC') }
-  let!(:with_different_field) { 
+  let!(:with_different_field) {
     create_list(
-      :submission, 
-      5, 
-      fields: { age: '12', phone: '1231432', gender: 'F' }, 
+      :submission,
+      5,
+      fields: { age: '12', phone: '1231432', gender: 'F' },
       created_at: '2019-10-08 19:39:06 UTC'
-    ) 
+    )
   }
 
   let(:all_submissions) {  DynamicForms::Submission.all }
@@ -47,18 +47,18 @@ describe DynamicForms::SubmissionExporter do
     end
 
     it 'includes the header' do
-      expect(rows.first).to eq('Created at,Gender,_subject,Phone,Age,Email,Name')
+      expect(rows.first).to eq('Created at,Gender,_subject,Message,Phone,Age,Email,Name')
     end
 
     it 'includes data with fields correctly' do
-      expect(rows.slice(2)).to eq("\"October 10, 2019, 19:39\",,Test email,,,custom@mail.com,John")
-      expect(rows.slice(6)).to eq("\"October 10, 2019, 19:39\",F,,1231432,12")
+      expect(rows.slice(2)).to eq("\"October 10, 2019, 19:39\",,Test email,Test message,,,custom@mail.com,John")
+      expect(rows.slice(6)).to eq("\"October 10, 2019, 19:39\",F,,,1231432,12")
     end
   end
 
   context '#to_xlsx' do
     subject { DynamicForms::SubmissionExporter.for(all_submissions, 'xlsx') }
-    let!(:xlsx) {  
+    let!(:xlsx) {
       temp = Tempfile.new(['submissions', '.xlsx'])
       temp.write(subject)
       temp.close
@@ -66,9 +66,9 @@ describe DynamicForms::SubmissionExporter do
     }
 
     it 'includes the header and data of submissions' do
-      expect(xlsx.row(1)).to eq(["Created at", "Gender", "_subject", "Phone", "Age", "Email", "Name"])
-      expect(xlsx.row(2)).to eq(["October 10, 2019, 19:39", nil, "Test email", nil, nil, "custom@mail.com", "John"])
-      expect(xlsx.row(8)).to eq(["October 10, 2019, 19:39", "F", nil, 1231432.0, 12.0, nil, nil])
+      expect(xlsx.row(1)).to eq(["Created at", "Gender", "_subject", "Message", "Phone", "Age", "Email", "Name"])
+      expect(xlsx.row(2)).to eq(["October 10, 2019, 19:39", nil, "Test email","Test message", nil, nil, "custom@mail.com", "John"])
+      expect(xlsx.row(8)).to eq(["October 10, 2019, 19:39", "F", nil,nil, 1231432.0, 12.0, nil, nil])
     end
   end
 end

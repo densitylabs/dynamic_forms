@@ -12,6 +12,7 @@ module DynamicForms
 
     def json_schema
       return unless custom_form&.json_schema_available?
+
       schemer = JSONSchemer.schema(custom_form.json_schema)
       unless schemer.valid?(fields)
         errors.add(:base, decode_json_schemer_errors(schemer.validate(fields).first))
@@ -21,46 +22,47 @@ module DynamicForms
     def decode_json_schemer_errors(error)
       messages = []
 
-      formatted_data_pointer = format_data_pointer error["data_pointer"]
+      formatted_data_pointer = format_data_pointer error['data_pointer']
 
-      case error["type"]
-      when "required"
-        if error["details"].key? "missing_keys"
-          messages << "#{formatted_data_pointer}is missing required keys '#{error["details"]["missing_keys"].join(", ")}'"
+      case error['type']
+      when 'required'
+        if error['details'].key? 'missing_keys'
+          messages << "#{formatted_data_pointer}is missing required keys '"\
+            "#{error["details"]["missing_keys"].join(", ")}'"
         else
           messages << "#{formatted_data_pointer}is missing required keys"
         end
-
-      when "schema"
-        if error["schema_pointer"] == "/additionalProperties"
-          messages << " contains unrecognized property '#{formatted_data_pointer}'"
+      when 'schema'
+        if error["schema_pointer"] == '/additionalProperties'
+          messages << "contains unrecognized property '#{formatted_data_pointer}'"
         else
-          messages << "does not validate: schema_pointer=#{error["schema_pointer"]}"
+          messages << "does not validate: schema_pointer=#{error['schema_pointer']}"
         end
-
-      when "string"
+      when 'string'
         messages << "property '#{formatted_data_pointer}' should be a string"
-      when "boolean"
+      when 'boolean'
         messages << "property '#{formatted_data_pointer}' should be a boolean"
-      when "integer"
+      when 'integer'
         messages << "property '#{formatted_data_pointer}' should be a number"
-      when "object"
+      when 'object'
         messages << "property '#{formatted_data_pointer}' should be an object"
-      when "pattern"
-        messages << "property '#{formatted_data_pointer}' does not match pattern: #{error["schema"]["pattern"]}"
-      when "format"
-        messages << "property '#{formatted_data_pointer}' does not match format: #{error['schema']['format']}"
+      when 'pattern'
+        messages << "property '#{formatted_data_pointer}' does not match "\
+          "pattern: #{error["schema"]["pattern"]}"
+      when 'format'
+        messages << "property '#{formatted_data_pointer}' does not match "\
+          "format: #{error['schema']['format']}"
       else
-        messages << "does not validate: error_type=#{error["type"]}"
+        messages << "does not validate: error_type=#{error['type']}"
       end
 
-      messages.flatten.join ", "
+      messages.flatten.join ', '
     end
 
     def format_data_pointer(data_pointer)
       data_pointer = data_pointer
-        .sub(%r|^/|, '')   # remove leading /
-        .sub('/', '.')     # convert / into .
+        .sub(%r|^/|, '')
+        .sub('/', '.')
         .capitalize
     end
   end

@@ -6,22 +6,32 @@ FactoryBot.define do
       is_schema_enabled { true }
       json_schema { {
         "title": "Contact us",
+        "description": "A simple contact us",
         "type": "object",
         "required": [
-          "name"
+          "name",
+          "email",
+          "message"
         ],
+        "additionalProperties": true,
         "properties": {
           "name": {
             "type": "string",
             "title": "Name"
           },
           "email": {
-            "type": "email",
-            "title": "Email"
+            "type": "string",
+            "title": "Email",
+            "format": "email"
           },
-          "_subject": {
+          "company": {
+            "type": "string",
+            "title": "Company"
+          },
+          "message": {
             "type": "text",
-            "title": "Subject"
+            "title": "Message",
+            "minLength": 10
           }
         }
       }.to_json }

@@ -17,14 +17,16 @@ module DynamicForms
           "email",
           "message"
         ],
+        "additionalProperties": true,
         "properties": {
           "name": {
             "type": "string",
             "title": "Name"
           },
           "email": {
-            "type": "email",
-            "title": "Email"
+            "type": "string",
+            "title": "Email",
+            "format": "email"
           },
           "company": {
             "type": "string",
@@ -33,7 +35,7 @@ module DynamicForms
           "message": {
             "type": "text",
             "title": "Message",
-            "minLength": 3
+            "minLength": 10
           }
         }
       }.to_json

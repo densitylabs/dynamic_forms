@@ -12,6 +12,7 @@ module DynamicForms
     def create
       submission = @custom_form.submissions.new(@params)
       return submission unless @custom_form.allow_recording_submissions?
+
       raise unless submission.save()
       submission
     rescue
