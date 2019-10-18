@@ -13,7 +13,7 @@ module DynamicForms
       def show
         if @custom_form.json_schema_available? || @custom_form.ui_schema_available?
           render json: @custom_form
-        end
+        else
           render json: { message: "There is no scheme available"},
             status: :unprocessable_entity
         end
