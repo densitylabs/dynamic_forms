@@ -61,7 +61,7 @@ describe DynamicForms::Api::FormController, type: :controller do
   end
 
   describe '#show' do
-    context 'when schema is enabled' do
+    context 'when some schema is enabled' do
       before do
         custom_form.update(
           is_json_schema_enabled: true,
@@ -72,17 +72,18 @@ describe DynamicForms::Api::FormController, type: :controller do
         custom_form.reload
       end
       it 'retuns the ok status' do
-        get :show, params: params.merge({_trap: 'something'})
+        get :show, params: params
         expect(response.status).to eq(200)
       end
     end
-    context 'when schema is not enabled' do
+    context 'when no schema is enabled' do
       before do
         custom_form.update(is_json_schema_enabled: false)
+        custom_form.update(is_ui_schema_enabled: false)
         custom_form.reload
       end
       it 'returns a unprocessable_entity status' do
-        get :show, params: params.merge({_trap: 'something'})
+        get :show, params: params
         expect(response.status).to eq(422)
       end
     end

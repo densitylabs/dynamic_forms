@@ -40,5 +40,24 @@ module DynamicForms
         }
       }.to_json
     end
+
+    def default_ui_schema
+      return @custom_form.ui_schema if @custom_form&.ui_schema
+
+      {
+        "name": {
+          "ui:autofocus": true,
+          "ui:title": "First and Last Name",
+          "ui:emptyValue": ""
+        },
+        "company": {
+          "ui:help": "This field could be empty"
+        },
+        "message": {
+          "ui:widget": "textarea",
+          "ui:description": "Write here what you want to tell us"
+        }
+      }.to_json
+    end
   end
 end

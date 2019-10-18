@@ -8,6 +8,8 @@ es:
         enabled: habilitado
         is_json_schema_enabled: JSON Schema habilitado
         json_schema: JSON Schema
+        is_ui_schema_enabled: UI Schema habilitado
+        ui_schema: UI Schema
         name: Nombre
         restrict_domain: Restringir al dominio
         slug: Identificador
