@@ -6,7 +6,7 @@ en:
         allow_notifications: Allow notifications
         allow_recording_submissions: Allow recording submissions
         enabled: Enabled
-        is_schema_enabled: Schema validator enabled
+        is_json_schema_enabled: JSON Schema enabled
         json_schema: JSON Schema
         name: Name
         restrict_domain: Restrict to domain

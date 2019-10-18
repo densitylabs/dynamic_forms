@@ -55,7 +55,7 @@ module DynamicForms
         :enabled,
         :allow_notifications,
         :allow_recording_submissions,
-        :is_schema_enabled,
+        :is_json_schema_enabled,
         :json_schema
       )
     end

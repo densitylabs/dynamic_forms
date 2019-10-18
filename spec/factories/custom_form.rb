@@ -3,7 +3,7 @@ FactoryBot.define do
     name { 'Custom form' }
 
     trait :with_json_schema do
-      is_schema_enabled { true }
+      is_json_schema_enabled { true }
       json_schema { {
         "title": "Contact us",
         "description": "A simple contact us",

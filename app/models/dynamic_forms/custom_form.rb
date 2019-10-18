@@ -12,7 +12,7 @@ module DynamicForms
     before_create :assign_slug
 
     def json_schema_available?
-       is_schema_enabled? && json_schema.present?
+       is_json_schema_enabled? && json_schema.present?
     end
 
     private

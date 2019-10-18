@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20191015173427) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.json "json_schema"
-    t.boolean "is_schema_enabled", default: false
+    t.boolean "is_json_schema_enabled", default: false
     t.index ["slug"], name: "index_dynamic_forms_custom_forms_on_slug"
   end
 
