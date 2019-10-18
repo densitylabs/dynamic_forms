@@ -1,0 +1,10 @@
+.d-inline-flex.w-100.mb-4.p-2.rounded.bg-light
+  .font-weight-bold
+    Endpoint:
+  .pl-2.text-monospace
+    = api_form_url(@custom_form)
+
+.form-group
+  = f.hidden_field :json_schema, value: default_json_schema
+
+#json_editor_container.w-100.mb-5{:style => "height: 600px;"}

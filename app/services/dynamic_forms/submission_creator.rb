@@ -11,10 +11,12 @@ module DynamicForms
 
     def create
       submission = @custom_form.submissions.new(@params)
-      submission.save() if @custom_form.allow_recording_submissions?
+      return submission unless @custom_form.allow_recording_submissions?
+
+      raise unless submission.save()
       submission
     rescue
-      raise submission.errors.full_messages if submission
+      raise submission.errors.full_messages.join(',') if submission
       raise 'Information cannot be recorded'
     end
   end

@@ -6,6 +6,8 @@ es:
         allow_notifications: Permitir notificaciones
         allow_recording_submissions: Permitir guardar registros
         enabled: habilitado
+        is_json_schema_enabled: JSON Schema habilitado
+        json_schema: JSON Schema
         name: Nombre
         restrict_domain: Restringir al dominio
         slug: Identificador

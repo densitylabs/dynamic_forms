@@ -14,13 +14,13 @@ Gem::Specification.new do |s|
   s.description = "Description of DynamicForms."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
-
+  s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
   s.add_dependency "rails", "~> 5.1.0"
   s.add_dependency "kaminari"
   s.add_dependency "friendly_id", "~> 5.1.0"
   s.add_dependency "jquery-rails"
-  s.add_dependency 'axlsx'
-  s.add_dependency 'axlsx_rails'
-  s.add_dependency 'zip-zip'
+  s.add_dependency "axlsx"
+  s.add_dependency "axlsx_rails"
+  s.add_dependency "zip-zip"
+  s.add_dependency "json_schemer"
 end

@@ -10,10 +10,20 @@ module DynamicForms
       before_action :validations
       before_action :remove_unnecessary_params, only: [:create]
 
+      def show
+        if @custom_form.json_schema_available?
+          render json: @custom_form
+        end
+          render json: { message: "JSON-Schema is not enabled"},
+            status: :unprocessable_entity
+        end
+      end
+
       def create
         submission = SubmissionCreator.for(custom_params, @custom_form)
         SubmissionNotificator.for(submission)
-        render json: {message: "The information was successfully sent"}, status: :ok
+        render json: {message: "The information was successfully sent"},
+          status: :ok
       rescue => e
         return render json:
           { message: e.message },

@@ -59,4 +59,32 @@ describe DynamicForms::Api::FormController, type: :controller do
       end
     end
   end
+
+  describe '#show' do
+    context 'when schema is enabled' do
+      before do
+        custom_form.update(
+          is_json_schema_enabled: true,
+          json_schema: {
+            "title": "example"
+          }.to_json
+        )
+        custom_form.reload
+      end
+      it 'retuns the ok status' do
+        get :show, params: params.merge({_trap: 'something'})
+        expect(response.status).to eq(200)
+      end
+    end
+    context 'when schema is not enabled' do
+      before do
+        custom_form.update(is_json_schema_enabled: false)
+        custom_form.reload
+      end
+      it 'returns a unprocessable_entity status' do
+        get :show, params: params.merge({_trap: 'something'})
+        expect(response.status).to eq(422)
+      end
+    end
+  end
 end

@@ -6,8 +6,10 @@ en:
         allow_notifications: Allow notifications
         allow_recording_submissions: Allow recording submissions
         enabled: Enabled
+        is_json_schema_enabled: JSON Schema enabled
+        json_schema: JSON Schema
         name: Name
-        restrict_domain: restrict to domain
+        restrict_domain: Restrict to domain
         slug: Slug
         target_email: Target email
     errors:
