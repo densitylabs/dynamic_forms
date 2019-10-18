@@ -11,11 +11,12 @@ module DynamicForms
       before_action :remove_unnecessary_params, only: [:create]
 
       def show
-        unless @custom_form.json_schema_available?
-          return render json: { message: "JSON-Schema is not enabled"},
+        if @custom_form.json_schema_available?
+          render json: @custom_form
+        end
+          render json: { message: "JSON-Schema is not enabled"},
             status: :unprocessable_entity
         end
-        render json: @custom_form
       end
 
       def create
