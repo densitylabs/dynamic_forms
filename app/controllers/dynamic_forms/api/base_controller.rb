@@ -1,3 +1,4 @@
+require 'active_model_serializers'
 module DynamicForms
   module Api
     class BaseController < ActionController::Base
