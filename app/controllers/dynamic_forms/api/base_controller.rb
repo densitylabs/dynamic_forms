@@ -1,6 +1,7 @@
 module DynamicForms
   module Api
     class BaseController < ActionController::Base
+      include ActionController::Serialization
       before_action :set_cors
 
       private
