@@ -1,4 +1,4 @@
-//= require jsoneditor.min
+//= require jsoneditor
 
 document.addEventListener("DOMContentLoaded", function(){
   initJsonEditor();
