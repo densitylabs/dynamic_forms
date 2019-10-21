@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function(){
   initJsonEditorUi();
 });
 
-function initJsonEditor(){
+initJsonEditor = function initJsonEditor(){
   const jsonEditorContainer = document.getElementById("json_editor_container");
   const jsonSchemaField = document.getElementById("custom_form_json_schema");
 
@@ -25,7 +25,7 @@ function initJsonEditor(){
   jsonEditor.set(JSON.parse(jsonSchemaField.value));
 }
 
-function initJsonEditorUi(){
+initJsonEditorUi = function (){
   const jsonEditorContainer = document.getElementById("json_editor_container_ui");
   const uiSchemaField = document.getElementById("custom_form_ui_schema");
 
