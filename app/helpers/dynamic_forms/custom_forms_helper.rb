@@ -10,7 +10,7 @@ module DynamicForms
 
       {
         "title": "Contact us",
-        "description": "A simple contact us ",
+        "description": "A simple contact us",
         "type": "object",
         "required": [
           "name",
@@ -33,7 +33,7 @@ module DynamicForms
             "title": "Company"
           },
           "message": {
-            "type": "text",
+            "type": "string",
             "title": "Message",
             "minLength": 10
           }
