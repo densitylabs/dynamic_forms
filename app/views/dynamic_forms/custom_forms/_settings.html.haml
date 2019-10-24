@@ -2,11 +2,11 @@
 
 .form-group
   = f.label :name
-  = f.text_field :name, class: "form-control #{invalid_class}"
+  = f.text_field :name, class: "form-control"
 
 .form-group
   = f.label :target_email
-  = f.text_field :target_email, class: "form-control #{invalid_class}", placeholder: 'To add more than one, use a "," to separate email addresses'
+  = f.text_field :target_email, class: "form-control", placeholder: 'To add more than one, use a "," to separate email addresses'
 
 .form-group
   .custom-control.custom-switch
@@ -35,4 +35,4 @@
 
 .form-group
   = f.label :restrict_domain
-  = f.text_field :restrict_domain, class: "form-control #{invalid_class}"
+  = f.text_field :restrict_domain, class: "form-control"

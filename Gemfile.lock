@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dynamic_forms (0.4.6)
+    dynamic_forms (0.4.7)
       active_model_serializers
       axlsx
       axlsx_rails

@@ -12,10 +12,11 @@ module DynamicForms
 
     def json_schema
       return unless custom_form&.json_schema_available?
-
       schemer = JSONSchemer.schema(custom_form.json_schema)
-      unless schemer.valid?(fields)
-        errors.add(:base, decode_json_schemer_errors(schemer.validate(fields).first))
+      return if schemer.valid?(fields)
+
+      schemer.validate(fields).each do |error|
+        errors.add(:base, decode_json_schemer_errors(error))
       end
     end
 
