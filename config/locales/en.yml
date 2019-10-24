@@ -19,6 +19,7 @@ en:
         blank: can't be blank
   custom_errors:
     invalid_mail: is not a valid email
+    json_schema: JSON Schema requires "properties" attribute
   custom_form:
     flash_messages:
       error:

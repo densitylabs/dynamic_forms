@@ -19,6 +19,7 @@ es:
         blank: no puede estar en blanco
   custom_errors:
     invalid_mail: no es un correo electrónico valido
+    json_schema: EL esquema JSON require el atributo "properties"
   custom_form:
     flash_messages:
       error:
