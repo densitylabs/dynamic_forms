@@ -6,10 +6,10 @@ es:
         allow_notifications: Permitir notificaciones
         allow_recording_submissions: Permitir guardar registros
         enabled: habilitado
-        is_json_schema_enabled: JSON Schema habilitado
-        json_schema: JSON Schema
-        is_ui_schema_enabled: UI Schema habilitado
-        ui_schema: UI Schema
+        is_json_schema_enabled: Esquema JSON habilitado
+        json_schema: Esquema JSON
+        is_ui_schema_enabled: Esquema de interfaz habilitado
+        ui_schema: Esquema de interfaz
         name: Nombre
         restrict_domain: Restringir al dominio
         slug: Identificador
@@ -19,7 +19,7 @@ es:
         blank: no puede estar en blanco
   custom_errors:
     invalid_mail: no es un correo electrónico valido
-    json_schema: EL esquema JSON require el atributo "properties"
+    json_schema: require el atributo "properties"
   custom_form:
     flash_messages:
       error:
