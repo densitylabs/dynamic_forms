@@ -21,13 +21,25 @@ Or install it yourself as:
 $ gem install dynamic_forms
 ```
 
+Then, add the migrations:
+```
+rake dynamic_forms:install:migrations
+```
+
 # mount forms
 
 You can mount the UI using:
 
 ```
-mount DynamicForms::Engine => "/dynamic_forms"
+mount DynamicForms::Engine, at: '/dynamic_forms'
 ```
+
+then you can add to your rails app the following link:
+
+```
+link_to 'dynamic_forms', dynamic_forms.custom_forms_path
+```
+
 
 ## Contributing
 Contribution directions go here.
