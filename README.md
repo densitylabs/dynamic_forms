@@ -24,6 +24,7 @@ $ gem install dynamic_forms
 Then, add the migrations:
 ```
 rake dynamic_forms:install:migrations
+rake db:migrate
 ```
 
 # mount forms
