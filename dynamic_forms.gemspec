@@ -7,7 +7,7 @@ require "dynamic_forms/version"
 Gem::Specification.new do |s|
   s.name        = "dynamic_forms"
   s.version     = DynamicForms::VERSION
-  s.authors     = ["Alejandro Prado"]
+  s.authors     = ["Alejandro Prado", "Federico Ramallo"]
   s.email       = ["alejandro.prado@densitylabs.io"]
   s.homepage    = ""
   s.summary     = "Summary of DynamicForms."
@@ -15,9 +15,9 @@ Gem::Specification.new do |s|
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
-  s.add_dependency "rails", "~> 5.1.0"
+  s.add_dependency "railties", ">= 5.1.0"
   s.add_dependency "kaminari"
-  s.add_dependency "friendly_id", "~> 5.1.0"
+  s.add_dependency "friendly_id", ">= 5.1.0"
   s.add_dependency "jquery-rails"
   s.add_dependency "axlsx"
   s.add_dependency "axlsx_rails"

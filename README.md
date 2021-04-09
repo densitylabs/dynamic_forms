@@ -21,6 +21,14 @@ Or install it yourself as:
 $ gem install dynamic_forms
 ```
 
+# mount forms
+
+You can mount the UI using:
+
+```
+mount DynamicForms::Engine => "/dynamic_forms"
+```
+
 ## Contributing
 Contribution directions go here.
 
