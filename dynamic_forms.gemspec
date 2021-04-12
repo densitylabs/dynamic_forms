@@ -12,9 +12,9 @@ Gem::Specification.new do |s|
   s.homepage    = ""
   s.summary     = "Summary of DynamicForms."
   s.description = "Description of DynamicForms."
-  s.license     = "MIT"
+  s.license     = "ISC"
 
-  s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  s.files = Dir["{app,config,db,lib,vendor}/**/*", "Rakefile", "README.md"]
   s.add_dependency "rails", ">= 5.1.0"
   s.add_dependency "kaminari"
   s.add_dependency "friendly_id", ">= 5.1.0"

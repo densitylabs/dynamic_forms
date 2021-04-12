@@ -8,7 +8,7 @@ How to use my plugin.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'dynamic_forms'
+gem 'dynamic_forms', github: 'densitylabs/dynamic_forms'
 ```
 
 And then execute:
@@ -44,6 +44,3 @@ link_to 'dynamic_forms', dynamic_forms.custom_forms_path
 
 ## Contributing
 Contribution directions go here.
-
-## License
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
